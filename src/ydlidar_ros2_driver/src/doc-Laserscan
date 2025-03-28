@@ -1,0 +1,37 @@
+std_msgs/Header header
+  - timestamp: データ取得時刻（スキャン開始時刻）
+  - frame_id: スキャンデータが属する座標フレームの識別子
+
+float32 angle_min
+  - スキャン開始角度（ラジアン単位）
+
+float32 angle_max
+  - スキャン終了角度（ラジアン単位）
+
+float32 angle_increment
+  - 測定間の角度間隔（ラジアン単位）
+
+float32 time_increment
+  - 測定間の時間間隔（秒単位）
+  - スキャナーが移動している場合、位置補間に使用されます
+
+float32 scan_time
+  - スキャン全体の所要時間（秒単位）
+
+float32 range_min
+  - 測定可能な最小距離（メートル単位）
+
+float32 range_max
+  - 測定可能な最大距離（メートル単位）
+
+float32[] ranges
+  - 距離データの配列（メートル単位）
+  - 各要素はスキャン角度に対応する距離値を保持します
+  - `angle_min`から`angle_max`までの範囲で、`angle_increment`ごとに測定された距離が格納されます
+  - 値が`range_min`未満または`range_max`を超える場合、その値は無効と見なされます
+
+float32[] intensities
+  - 強度データの配列（デバイス固有の単位）
+  - デバイスが強度情報を提供する場合に使用されます
+  - 強度情報がない場合、この配列は空となります
+
